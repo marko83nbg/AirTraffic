@@ -62,8 +62,11 @@ function getAircraftData(latitude, longitude) {
 					 "<td>" + aircraftData.Call  + "</td>"+
 					 "<td>" + (aircraftData.Trak < 180 ? "<img src='img/airplane_easting.png'>" : "<img src='img/airplane_westing.png'>") + "</td></tr>");
 			
-			
-		}
+		$("#"+rowId).click(function(event) {
+                    localStorage.setItem("aircraft", JSON.stringify(aircraftData)); 
+                    location.href="details.html"; 
+		});	
+		};
 	})
 	.fail(function(jqXHR){
 		$(".conteiner").html(jqXHR.toSource());
